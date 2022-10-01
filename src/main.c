@@ -31,6 +31,7 @@ uint32_t get_lines(const char* file_path);
 uint32_t get_token_lenght(file_t file);
 lexer_t tokenize_file(file_t file);
 void debug_lexer(lexer_t lexer);
+lines_t* get_line_data(const char *file_path,uint32_t line_len);
 
 #pragma region file_operations
 uint32_t get_file_size(const char* file_path){
