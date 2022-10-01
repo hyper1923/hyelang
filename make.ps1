@@ -1,0 +1,1 @@
+cl .\src\main.c -o .\build\;build/main.exe test.hyeo

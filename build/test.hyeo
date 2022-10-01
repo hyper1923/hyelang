@@ -1,0 +1,7 @@
+bool test_arg = true;
+unsigned int data = 32;
+string data = "Hello World";
+
+func main() -> bool(
+    printf("Hello World!");
+);
