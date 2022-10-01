@@ -26,14 +26,19 @@ typedef struct{
     uint32_t TOKEN_LENGHT;
 } lexer_t;
 
+#pragma region io_ops
 uint32_t get_file_size(const char* file_path);
 uint32_t get_lines(const char* file_path);
+lines_t* get_line_data(const char *file_path,uint32_t line_len);
+#pragma endregion
+
+#pragma region lexer_token
 uint32_t get_token_lenght(file_t file);
 lexer_t tokenize_file(file_t file);
-void debug_lexer(lexer_t lexer);
-lines_t* get_line_data(const char *file_path,uint32_t line_len);
+#pragma endregion
 
-#pragma region file_operations
+void debug_lexer(lexer_t lexer);
+
 uint32_t get_file_size(const char* file_path){
     FILE* fp = fopen(file_path,"r");
     fseek(fp,0,SEEK_END);
@@ -82,8 +87,7 @@ file_t open_file(const char* file_path){
 
     return file;
 }
-#pragma endregion
-#pragma region token_and_lexer
+
 uint32_t get_token_lenght(file_t file){
     uint32_t b;
     b = 0;
@@ -118,17 +122,11 @@ lexer_t tokenize_file(file_t file){
     return (lexer_t){.TOKENS = tokens,.TOKEN_LENGHT = token_lenght};
 }
 
-#pragma endregion
-#pragma region debug
 void debug_lexer(lexer_t lexer){
     for(uint32_t i = 0; i < lexer.TOKEN_LENGHT; i++){
         printf("hye token: %s\n",lexer.TOKENS[i].TOKEN);
     };
 }
-#pragma endregion
-#pragma region parsing
-    
-#pragma endregion
 
 
 int main(int argc, char* argv[]){
