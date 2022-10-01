@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#pragma region data_structs
+
 typedef struct{
     uint8_t* line;
     uint32_t len;
@@ -25,7 +25,13 @@ typedef struct{
     token_t* TOKENS;
     uint32_t TOKEN_LENGHT;
 } lexer_t;
-#pragma endregion
+
+uint32_t get_file_size(const char* file_path);
+uint32_t get_lines(const char* file_path);
+uint32_t get_token_lenght(file_t file);
+lexer_t tokenize_file(file_t file);
+void debug_lexer(lexer_t lexer);
+
 #pragma region file_operations
 uint32_t get_file_size(const char* file_path){
     FILE* fp = fopen(file_path,"r");
